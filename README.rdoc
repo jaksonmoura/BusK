@@ -1,0 +1,9 @@
+# O que é o BusK?
+
+BusK é uma iniciativa independente que tem a intenção de ajudar pessoas a se locomover mais facilmente com o transporte público. Inicialmente o projeto será implantado em Palmas, podendo expandir.
+
+====================
+
+# What's BusK?
+
+BusK is a indie initiative that intends to help people to get buses more easily. Initially the project will be deployed for Palmas only, but it can be expanded.

@@ -1,0 +1,31 @@
+<div class="hl_top_content hl_content">
+  <h1>Linhas</h1>
+</div>
+
+<div class="container">
+  <div class="panel tb_panel">
+    <table class="tb_lines">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @lines.each do |line| %>
+          <tr>
+            <td class="name"><%= link_to line.name, line %></td>
+            <td class="actions"><%= link_to image_tag('edit.png'), edit_line_path(line), alt: 'Editar', title: 'Editar' %>
+                <%= link_to image_tag('remove.png'), line, method: :delete, data: { confirm: 'Are you sure?' }, alt: 'Editar', title: 'Editar' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="new_panel">
+    <h2>Nova linha</h2>
+      <%= render 'form' %>
+  </div>
+</div>

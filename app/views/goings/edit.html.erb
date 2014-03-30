@@ -1,0 +1,21 @@
+<div class="sidebar">
+  <div class="content">
+    <h1><%= @line.name %> - Ida</h1>
+    <%= render 'form' %>
+  </div>
+</div>
+<div class="main_window">
+  <div class="map">
+    <div id="map-canvas"/>
+  </div>
+</div>
+<%= content_for :foot do %>
+  <%= render 'lines/maps' %>
+  <%= javascript_include_tag 'l_map', :cache => true %>
+  <script>
+  $( document ).ready(function() {
+    initialize(true);
+    loadRoute(<%= raw '{"start":{"lat":'+@going.start_location.split(",")[0].to_s+',"lng":'+@going.start_location.split(",")[1].to_s+'},"end":{"lat":'+@going.end_location.split(",")[0].to_s+',"lng":'+@going.end_location.split(",")[1].to_s+'},"waypoints":'+@going.waypoints.to_s+'}' %>);
+  });
+  </script>
+<% end %>

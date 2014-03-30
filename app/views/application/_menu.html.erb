@@ -1,0 +1,12 @@
+<nav class="main_menu">
+  <div class="menu_title"><span>MENU</span></div>
+  <li><%= link_to 'Início', root_path %></li>
+  <li><%= link_to 'Linhas', all_lines_path %></li>
+  <% if user_signed_in? %>
+    <li><%= link_to 'Paradas', busstops_path %></li>
+  <% end %>
+  <li><%= link_to 'Sobre', about_path %></li>
+  <div class="donate">
+
+  </div>
+</nav>

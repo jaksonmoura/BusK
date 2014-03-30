@@ -1,0 +1,23 @@
+<%= content_for :settings do %>
+  <div class="route_actions">
+    <ul>
+      <li><%= link_to 'Editar', edit_busstop_path(@busstop) %></li>
+    </ul>
+  </div>
+<% end %>
+<div class="hl_top_content hl_content"><h1><%= @busstop.name %></h1></div>
+<div class="full_window">
+  <div class="map">
+    <div id="map-canvas"/>
+  </div>
+</div>
+
+<%= content_for :foot do %>
+  <%= render 'lines/maps' %>
+  <%= javascript_include_tag 'bs_map', :cache => false %>
+  <script>
+  $(document).ready(function() {
+    initialize(false, <%= @busstop.lat %>, <%= @busstop.lng %>, "<%= @busstop.name %>");
+  })
+  </script>
+<% end %>

@@ -1,0 +1,47 @@
+<% content_for :settings do %>
+  <div class="route_actions">
+    <ul>
+      <li><%= link_to 'Editar rota', edit_line_return_path(@line, @return) %></li>
+      <li><%= link_to 'Voltar', @line %></li>
+    </ul>
+  </div>
+<% end %>
+<div class="sidebar">
+  <div class="content">
+    <h1><%= @return.line.name %> - Volta</h1>
+    <div class="left_alg box_100pc">
+      <h3>Intinerário:</h3>
+      <p class="l_time">
+        <strong>Início:</strong>
+        <%= @start_time %>
+      </p>
+      <p class="l_time">
+        <strong>Fim:</strong>
+        <%= @end_time %>
+      </p>
+    </div>
+    <div class="blocks_passed">
+      <h3>Esta linha passa por:</h3>
+      <ul>
+        <% @blocks_passed.each do |b| %>
+        <li><%= b %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="main_window">
+  <div class="map">
+    <div id="map-canvas"/>
+  </div>
+</div>
+<%= content_for :foot do %>
+  <%= render 'lines/maps' %>
+  <%= javascript_include_tag 'l_map', :cache => true %>
+  <script>
+  $( document ).ready(function() {
+    initialize(false, <%= raw @busstops %>);
+    loadRoute(<%= raw '{"start":{"lat":'+@return.start_location.split(",")[0].to_s+',"lng":'+@return.start_location.split(",")[1].to_s+'},"end":{"lat":'+@return.end_location.split(",")[0].to_s+',"lng":'+@return.end_location.split(",")[1].to_s+'},"waypoints":'+@return.waypoints.to_s+'}' %>);
+  });
+  </script>
+<% end %>

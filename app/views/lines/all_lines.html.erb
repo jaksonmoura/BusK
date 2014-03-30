@@ -1,0 +1,25 @@
+<div class="hl_top_content hl_content">
+  <h1>Linhas</h1>
+</div>
+
+<div class="container">
+  <div class="center_panel tb_panel">
+    <table class="tb_lines">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Nº rotas</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @lines.each do |line| %>
+          <tr>
+            <td class="name"><%= link_to line.name, line %></td>
+            <td class="start_time"><%= @lines_count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

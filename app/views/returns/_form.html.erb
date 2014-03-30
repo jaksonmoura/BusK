@@ -1,0 +1,56 @@
+<%= form_for([@line, @return], :html => {:class => 'return_form'}) do |f| %>
+  <% if @return.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@return.errors.count, "error") %> prohibited this return from being saved:</h2>
+
+      <ul>
+      <% @return.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :start_location %>
+  <%= f.hidden_field :end_location %>
+  <%= f.hidden_field :waypoints %>
+  <div class="field">
+    <%= f.label :frequency, 'Frequência' %> <br>
+    <%= f.number_field :frequency, autofocus: true %>(min)
+  </div>
+  <div class="field days_of_week">
+    <%= f.label :days_of_week, 'Dias da semana' %>
+    <%= f.hidden_field :days_of_week %>
+    <div class="week">
+      <% if params[:action] == 'edit' %>
+      <ul>
+      <% @days.each do |i, d| %>
+        <% if @return.days_of_week.split(',').include? i %>
+          <li class="day selected"><%= i %></li>
+        <% else %>
+          <li class="day"><%= i %></li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% else %>
+      <ul>
+        <li class="day">Dom</li>
+        <li class="day">Seg</li>
+        <li class="day">Ter</li>
+        <li class="day">Qua</li>
+        <li class="day">Qui</li>
+        <li class="day">Sex</li>
+        <li class="day">Sab</li>
+      </ul>
+    <% end %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :blocks_passed, "Quadras por onde passa" %><br>
+    <%= f.text_area :blocks_passed %>
+  </div>
+  <%= f.hidden_field :line_id, value: @line.id %>
+  <div class="actions">
+    <%= f.submit "Salvar Volta", id: :save_return %>
+  </div>
+<% end %>

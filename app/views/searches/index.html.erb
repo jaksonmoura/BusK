@@ -1,0 +1,93 @@
+<div class="hl_content">
+  <%= render 'form' %>
+</div>
+<div class="search_container">
+  <div class="going_line">
+<h2>Idas</h2>
+<% if @goings.size <= 0 %>
+<p>Nenhuma rota de ida encontrada.</p>
+<% else %>
+  <% @goings.each do |going| %>
+    <a href="<%= line_going_path(going.line_id, going.id) %>" class="route">
+      <nav class="week">
+        <% @days.each do |i, d| %>
+          <% if going.days_of_week.split(',').include? i %>
+            <li class="day selected"><%= d %></li>
+          <% else %>
+            <li class="day"><%= d %></li>
+          <% end %>
+        <% end %>
+      </nav>
+      <div class="route_name"><span><%= truncate going.line.name, length: 15 %></span></div>
+    </a>
+  <% end %>
+<% end %>
+<hr class="route_div">
+<% if !@s_goings.nil? or @s_goings %>
+  <% if @s_goings.size <= 0 %>
+    <p>Nenhuma rota próxima encontrada.</p>
+  <% else %>
+    <h3>Rotas próximas</h3>
+    <% @s_goings.each do |going| %>
+      <a href="<%= line_going_path(going.line_id, going.id) %>" class="route">
+        <nav class="week">
+          <% @days.each do |i, d| %>
+            <% if going.days_of_week.split(',').include? i %>
+              <li class="day selected"><%= d %></li>
+            <% else %>
+              <li class="day"><%= d %></li>
+            <% end %>
+          <% end %>
+        </nav>
+        <div class="route_name"><span><%= truncate going.line.name, length: 15 %></span></div>
+      </a>
+    <% end %>
+  <% end %>
+<% end %>
+
+</div>
+
+<div class="return_line">
+  <h2>Voltas</h2>
+  <% if @returns.size <= 0 %>
+  <p>Nenhuma rota de volta encontrada.</p>
+  <% else %>
+    <% @returns.each do |r| %>
+      <a href="<%= line_return_path(r.line_id, r.id) %>" title="<%= r.line.name %>" class="route">
+        <nav class="week">
+          <% @days.each do |i, d| %>
+            <% if r.days_of_week.split(',').include? i %>
+            <li class="day selected"><%= d %></li>
+            <% else %>
+              <li class="day"><%= d %></li>
+            <% end %>
+          <% end %>
+        </nav>
+        <div class="route_name"><span><%= truncate r.line.name, length: 15 %></span></div>
+      </a>
+    <% end %>
+  <% end %>
+<hr class="route_div">
+  <% if !@s_returns.nil? or @s_returns %>
+    <% if @s_returns.size <= 0 %>
+      <p>Nenhuma rota próxima encontrada.</p>
+    <% else %>
+      <h3>Rotas próximas</h3>
+      <% @s_returns.each do |rtn| %>
+        <a href="<%= line_return_path(rtn.line_id, rtn.id) %>" class="route">
+          <nav class="week">
+            <% @days.each do |i, d| %>
+              <% if rtn.days_of_week.split(',').include? i %>
+                <li class="day selected"><%= d %></li>
+              <% else %>
+                <li class="day"><%= d %></li>
+              <% end %>
+            <% end %>
+          </nav>
+          <div class="route_name"><span><%= truncate rtn.line.name, length: 15 %></span></div>
+        </a>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+</div>

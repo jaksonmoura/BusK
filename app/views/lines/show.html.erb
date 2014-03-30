@@ -1,0 +1,48 @@
+<div class="hl_top_content hl_content">
+  <h1><%= @line.name %></h1>
+  <%= content_for :settings do %>
+    <div class="route_actions">
+      <ul>
+        <li><%= link_to 'Editar linha', edit_line_path(@line) %></li>
+        <li><%= link_to 'Adicionar ida', new_line_going_path(@line) %></li>
+        <li><%= link_to 'Adicionar volta', new_line_return_path(@line) %></li>
+      </ul>
+  </div>
+  <% end %>
+</div>
+
+<div class="going_line">
+<h2>Idas</h2>
+<% @goings.each do |going| %>
+  <a href="<%= line_going_path(going.line_id, going.id) %>" class="route">
+    <nav class="week">
+      <% @days.each do |i, d| %>
+        <% if going.days_of_week.split(',').include? i %>
+          <li class="day selected"><%= d %></li>
+        <% else %>
+          <li class="day"><%= d %></li>
+        <% end %>
+      <% end %>
+    </nav>
+    <div class="route_name"><span><%= truncate going.line.name, length: 15 %></span></div>
+  </a>
+<% end %>
+</div>
+
+<div class="return_line">
+  <h2>Voltas</h2>
+  <% @returns.each do |r| %>
+    <a href="<%= line_return_path(r.line_id, r.id) %>" title="<%= r.line.name %>" class="route">
+      <nav class="week">
+        <% @days.each do |i, d| %>
+          <% if r.days_of_week.split(',').include? i %>
+          <li class="day selected"><%= d %></li>
+          <% else %>
+            <li class="day"><%= d %></li>
+          <% end %>
+        <% end %>
+      </nav>
+      <div class="route_name"><span><%= truncate r.line.name, length: 15 %></span></div>
+    </a>
+  <% end %>
+</div>

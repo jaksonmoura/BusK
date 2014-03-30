@@ -1,0 +1,39 @@
+$light_green: #88D69A;
+$dark_green: #1D4E2D;
+$light_yellow: #FFD141;
+$dark_yellow: #52470E;
+
+// Form
+.return_form{
+
+  textarea{
+    width: 100%;
+    height: 100px;
+  }
+
+  .days_of_week{
+    .week{
+      float: left;
+      width: 100%;
+      margin: 5px 0 10px 0;
+
+      ul{
+        list-style: none;
+      }
+      .selected{
+        opacity: 1 !important;
+      }
+      .day{
+        float: left;
+        background: $light_yellow;
+        color: $dark_yellow;
+        text-align: center;
+        padding: 7px 0;
+        margin-right: 5px;
+        width: 40px;
+        cursor: pointer;
+        opacity: .6;
+      }
+    }
+  }
+}

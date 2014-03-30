@@ -1,0 +1,34 @@
+<%= content_for :settings do %>
+<div class="route_actions">
+  <ul>
+    <li><%= link_to 'Adicionar parada', new_busstop_path %></li>
+  </ul>
+</div>
+<% end %>
+<div class="hl_top_content hl_content">
+  <h1>Paradas/Estações</h1>
+</div>
+
+<div class="container">
+  <div class="center_panel tb_center_panel">
+    <table class="tb_busstops">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @busstops.each do |busstop| %>
+          <tr>
+            <td class="name"><div class="bus_icon"><%= busstop.kind == 1 ? image_tag('busstation.png') : image_tag('busstop.png') %></div><%= link_to busstop.name, busstop %></td>
+            <td class="actions"><%= link_to image_tag('edit.png'), edit_busstop_path(busstop), alt: 'Editar', title: 'Editar' %>
+                <%= link_to image_tag('remove.png'), busstop, method: :delete, data: { confirm: 'Deseja realmente remover?' }, alt: 'Remover', title: 'Remover', id: 'delete_busstop' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

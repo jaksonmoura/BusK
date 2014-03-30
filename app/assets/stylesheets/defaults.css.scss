@@ -1,0 +1,24 @@
+$main: #3656AA;
+$light_green: #88D69A;
+$dark_green: #1D4E2D;
+$light_yellow: #FFD141;
+$dark_yellow: #52470E;
+
+.center_alg{
+  text-align: center;
+}
+
+//  Inputs
+// ===============
+input{
+  padding: 5px;
+}
+// Submit
+input[type='submit']{
+  padding: 5px 10px;
+  background: $light_green;
+  color: $dark_green;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}

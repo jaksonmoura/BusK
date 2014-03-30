@@ -1,0 +1,27 @@
+<%= form_for(@busstop, :html => {:class => 'busstop_form'}) do |f| %>
+  <% if @busstop.errors.any? %>
+    <div id="error_explanation">
+      <h2>Alguma coisa deu errado. Veja o que ocorreu:</h2>
+
+      <ul>
+      <% @busstop.errors.full_messages.each do |i, msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :lat %>
+  <%= f.hidden_field :lng %>
+  <div class="field">
+    <%= f.label :name, 'Nome' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :kind, 'Tipo' %><br>
+    <%= f.select :kind, {0 => 'Parada', 1 => 'Estação'}.map{|i, v| [v, i]} %>
+  </div>
+  <div class="actions">
+    <%= f.submit params[:action] == 'new' ? 'Salvar parada' : 'Atualiza parada' %>
+  </div>
+<% end %>

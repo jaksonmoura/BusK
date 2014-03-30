@@ -1,0 +1,21 @@
+<div class="sidebar">
+  <div class="content">
+    <h1>Editar <%= @line.name %> - Volta</h1>
+    <%= render 'form' %>
+  </div>
+</div>
+<div class="main_window">
+  <div class="map">
+    <div id="map-canvas"/>
+  </div>
+</div>
+<%= content_for :foot do %>
+  <%= render 'lines/maps' %>
+  <%= javascript_include_tag 'l_map', :cache => true %>
+  <script>
+  $( document ).ready(function() {
+    initialize(true);
+    loadRoute(<%= raw '{"start":{"lat":'+@return.start_location.split(",")[0].to_s+',"lng":'+@return.start_location.split(",")[1].to_s+'},"end":{"lat":'+@return.end_location.split(",")[0].to_s+',"lng":'+@return.end_location.split(",")[1].to_s+'},"waypoints":'+@return.waypoints.to_s+'}' %>);
+  });
+  </script>
+<% end %>

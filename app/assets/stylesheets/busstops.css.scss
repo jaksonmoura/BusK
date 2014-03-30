@@ -1,0 +1,83 @@
+$light_green: #88D69A;
+$dark_green: #1D4E2D;
+$light_yellow: #FFD141;
+$dark_yellow: #52470E;
+
+// Form
+.busstop_form{
+  h1{
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  input[type=text], select{
+      width: 80%;
+  }
+
+  textarea{
+    width: 100%;
+    height: 100px;
+  }
+
+}
+
+// Table
+
+.tb_center_panel{
+  width: 40%;
+  float: none;
+  margin: 0 auto;
+}
+
+.tb_busstops{
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px 5px 0 0;
+  border-spacing: 0;
+
+  th, td{
+    padding: 7px 5px;
+  }
+  th{
+    color: #555;
+
+  background-color: #e7e7e7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#d9d9d9));
+  background-image: -webkit-linear-gradient(top, #e7e7e7, #d9d9d9);
+  background-image:    -moz-linear-gradient(top, #e7e7e7, #d9d9d9);
+  background-image:      -o-linear-gradient(top, #e7e7e7, #d9d9d9);
+  background-image:         linear-gradient(to bottom, #e7e7e7, #d9d9d9);
+
+    text-shadow: 0 1px 0 rgba(#fff, .7);
+    &:last-child{
+      width: 100px;
+    }
+  }
+
+  thead th{
+    border-bottom: 1px solid #ccc;
+  }
+
+  tbody tr:nth-child(2n){
+    background: #E5EAEE;
+  }
+
+  tbody tr:last-child td{
+    border: none;
+  }
+
+  .name{
+    text-align: left;
+  }
+}
+
+.bus_icon{
+  float: left;
+  margin-right: 5px;
+  img{
+    width: 15px;
+    height: 100%;
+  }
+}

@@ -1,0 +1,23 @@
+<%= form_tag('/search', method: :get, :class => "search_form") do %>
+<div class="current_loc">
+  <h2>Estou:</h2>
+  <div class="field block">
+    <label><%= select_tag :cur_b, options_for_select(@blocks.map{|b| [b.block, b.block]}, :selected => params[:cur_b]), prompt: 'Quadra:', autofocus: true %></label>
+  </div>
+  <div class="field av">
+    <label><%= select_tag :cur_av, options_for_select(@avenues.map{|a| [a.avenue, a.avenue]}), :selected => params[:cur_av], prompt: 'Avenida:' %></label>
+  </div>
+</div>
+<div class="going_loc">
+  <h2>Vou para:</h2>
+  <div class="field block">
+    <label><%= select_tag :des_b, options_for_select(@blocks.map{|b| [b.block, b.block]}, :selected => params[:des_b]), prompt: 'Quadra:' %></label>
+  </div>
+  <div class="field av">
+    <label><%= select_tag :des_av, options_for_select(@avenues.map{|a| [a.avenue, a.avenue]}, :selected => params[:des_av]), prompt: 'Avenida:' %></label>
+  </div>
+</div>
+<div class="actions">
+  <%= submit_tag 'Buscar rota' %>
+</div>
+<% end %>
