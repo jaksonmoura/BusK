@@ -9,14 +9,19 @@ class SearchesController < ApplicationController
     # At the same time look for surrounding blocks
 
     # Looks for surroundings
-    if @goings == []
-      @s_goings = Going.search_surroundings("#{params[:cur_b]}", "#{params[:des_b]}")
+    if !params[:cur_b].empty?
+      if @goings == []
+        @s_goings = Going.search_surroundings("#{params[:cur_b]}", "#{params[:des_b]}")
+      end
+      if @returns == []
+        @s_returns = Return.search_surroundings("#{params[:cur_b]}", "#{params[:des_b]}")
+      end
+    else
+      @s_goings = []
+      @s_returns = []
     end
-    if @returns == []
-      @s_returns = Return.search_surroundings("#{params[:cur_b]}", "#{params[:des_b]}")
-    end
-          # At the same block but in differents Av.
-          # @b_goings = Going.search("#{params[:cur_b]}", "#{params[:des_b]}")
-          # @b_returns = Return.search("#{params[:cur_b]}", "#{params[:des_b]}")
+    # At the same block but in differents Av.
+    # @b_goings = Going.search("#{params[:cur_b]}", "#{params[:des_b]}")
+    # @b_returns = Return.search("#{params[:cur_b]}", "#{params[:des_b]}")
   end
 end
