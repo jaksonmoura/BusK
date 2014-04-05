@@ -40,7 +40,7 @@
   <%= javascript_include_tag 'l_map', :cache => true %>
   <script>
   $( document ).ready(function() {
-    initialize(false, <%= raw @busstops %>);
+    initialize(false, <%= raw @busstops %>, [<%= @going.start_location.split(",")[0].to_s+','+@going.start_location.split(",")[1].to_s %>], [<%= @going.end_location.split(",")[0].to_s+','+@going.end_location.split(",")[1].to_s%>]);
     loadRoute(<%= raw '{"start":{"lat":'+@going.start_location.split(",")[0].to_s+',"lng":'+@going.start_location.split(",")[1].to_s+'},"end":{"lat":'+@going.end_location.split(",")[0].to_s+',"lng":'+@going.end_location.split(",")[1].to_s+'},"waypoints":'+@going.waypoints.to_s+'}' %>);
   });
   </script>

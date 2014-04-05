@@ -12,7 +12,7 @@ var ren,
     palmas = new google.maps.LatLng(-10.204164, -48.3332),
     minZoomLevel = 12;
 
-function initialize(edit, busstops) {
+function initialize(edit, busstops, startline, endline) {
   var mapOptions = {
     center: palmas,
     zoom: 14,
@@ -86,6 +86,22 @@ function initialize(edit, busstops) {
       }
     }
   };
+
+// Start/End markers
+  var l_start = new google.maps.LatLng(startline[0], startline[1]);
+  var l_end = new google.maps.LatLng(endline[0], endline[1]);
+  // Start
+  var marker = new google.maps.Marker({
+    position: l_start,
+    map: map,
+    icon: '/assets/linestart.png',
+  });
+  // End
+  var marker = new google.maps.Marker({
+    position: l_end,
+    map: map,
+    icon: '/assets/lineend.png',
+  });
 
 }
 
