@@ -4,7 +4,14 @@
   <title>BusK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=1">
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "defaults", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "searches", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "lines", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "goings", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "returns", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "busstops", media: "all", "data-turbolinks-track" => true %>
   <%= yield :head %>
 </head>
 <body>

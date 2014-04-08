@@ -4,6 +4,9 @@
   <title>BusK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=1">
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "searches", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "defaults", media: "all", "data-turbolinks-track" => true %>
+  <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
   <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>
@@ -16,7 +19,7 @@
   <label for="active_menu" class="menu_btn"><%= image_tag('menu.png') %></label>
   <div class="notice"><%= notice if notice %></div>
   <div class="logo">
-    <%= image_tag('logo.png') %>
+    <%= image_tag('logo_w.png') %>
   </div>
 </header>
 <div class="welcome_wrapper wrapper">
